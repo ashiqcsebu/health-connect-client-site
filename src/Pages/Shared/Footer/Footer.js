@@ -14,30 +14,31 @@ const Footer = () => {
     >
       <div className="footer">
         <div>
-          <span className="footer-title">Corporate Address</span>
-           <h4> House#15-19, Block-E, Banasree Main Road</h4>
-           <h4> Rampura, Dhaka-1219.</h4> 
+          <span className="footer-title">Address</span>
+           <h4> House#15-19, Block-E, Avenue-5 </h4>
+           <h4> Rupatoli Notun Abasik</h4>  
+           <h4> Rupatoli, Barisal-8200</h4> 
         
         </div>
         <div>
-          <span className="footer-title">Company</span>
+          <span className="footer-title">For More Info</span>
         
           <Link to="/" className="link link-hover">
-            Contact
+            Contact Us
           </Link>
           <Link to="/" className="link link-hover">
-            Jobs
+            Career
           </Link>
           <Link to="/" className="link link-hover">
-            Press kit
+            About Us
           </Link>
         </div>
         <div>
           
-          {/* <span className="footer-title">Legal</span>
+           <span className="footer-title">Legal</span>
                     <Link to="/" className="link link-hover">Terms of use</Link>
                     <Link to="/" className="link link-hover">Privacy policy</Link>
-                    <Link to="/" className="link link-hover">Cookie policy</Link> */}
+                    <Link to="/" className="link link-hover">Cookie policy</Link> 
         </div>
       </div>
       <div className="text-center mt-32">

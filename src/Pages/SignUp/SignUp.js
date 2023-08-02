@@ -133,8 +133,8 @@ const SignUp = () => {
             Please Login
           </Link>
         </p>
-        <div className="divider">OR</div>
-        <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+        {/* <div className="divider">OR</div>
+        <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button> */}
       </div>
     </div>
   );

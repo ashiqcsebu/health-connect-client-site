@@ -22,13 +22,13 @@ const MyAppointment = () => {
         }
        
     })
-    console.log(bookings);
+
     return (
         <div>
             <h3 className="text-3xl mb-5">My Appointments</h3>
             <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
+                <table className="table w-full ">
+                    <thead >
                         <tr>
                             <th></th>
                             <th>Name</th>
@@ -39,8 +39,8 @@ const MyAppointment = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            bookings  &&
+                         {
+                            bookings>=0  &&
                             bookings?.map((booking, i) => <tr key={booking._id}>
                                 <th>{i + 1}</th>
                                 <td>{booking.patient}</td>
@@ -49,7 +49,7 @@ const MyAppointment = () => {
                                 <td>{booking.slot}</td>
                                 <td>
                                     {
-                                        booking.price && !booking.paid && <Link
+                                        booking?.price && !booking.paid && <Link
                                             to={`/dashboard/payment/${booking?._id}`}
                                         >
                                             <button
@@ -61,8 +61,9 @@ const MyAppointment = () => {
                                         booking.price && booking.paid && <span className='text-green-500'>Paid</span>
                                     }
                                 </td>
-                            </tr>)
-                        }
+                            </tr>
+                            )
+                        } 
                     </tbody>
                 </table>
             </div>

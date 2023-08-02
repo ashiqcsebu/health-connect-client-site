@@ -9,32 +9,32 @@ const Testimonial = () => {
   const reviews = [
     {
       _id: 1,
-      name: "Winson Herry",
-      img: people1,
+      name: "Shafiqul Islam",
+       img: people1,
       review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      location: "California",
+        "Health Connect is Very User Friendly, Hassle free doctor appointment platform",
+      location: "Patharghata, Barguna",
     },
     {
       _id: 2,
-      name: "Winson Herry",
+      name: "Rokeya Khanom", 
       img: people2,
       review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      location: "California",
+        "Easy and Hassle free Doctor Appointment system,Best Of Luck",
+      location: "Rajapur, Jhalokathi",
     },
     {
       _id: 3,
       name: "Winson Herry",
       img: people3,
       review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      location: "California",
+        "It is a long established fact that by the readable content of a lot layout.",
+      location: "Bakergonj, Barishal",
     },
   ];
 
   return (
-    <section className="my-16">
+    <section className="my-12">
       <div className="text-center">
       <h2 className="text-xl text-primary font-bold">TESTIMONIAL</h2>
           <h3 className="text-4xl">What Our Patients Says</h3>

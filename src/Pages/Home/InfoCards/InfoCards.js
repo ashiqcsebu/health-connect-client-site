@@ -10,20 +10,20 @@ const InfoCards = () => {
         {
             id: 1,
             name: 'Opening Hours',
-            description: 'Wr are open 24/7',
+            description: 'Oneline Booking available 24/7',
             icon: clock,
             bgClass: 'bg-gradient-to-r from-primary to-secondary'
         },
         {
             id: 2,
             name: 'Our Locations',
-            description: 'Banani, Dhaka',
+            description: 'Rupatoli, Barisal',
             icon: marker,
             bgClass: 'bg-accent'
         },
         {
             id: 3,
-            name: 'Contact Us',
+            name: 'Emergency Helpline',
             description: '+88017123456 Or 16123',
             icon: phone,
             bgClass: 'bg-gradient-to-r from-primary to-secondary'

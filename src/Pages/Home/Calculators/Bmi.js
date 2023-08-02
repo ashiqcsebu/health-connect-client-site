@@ -28,9 +28,9 @@ const Bmi = () => {
     setBMI(0);
   };
   return (
-    <div className="border p-3">
+    <div className="border p-24">
       <h5 className="text-center font-bold text-gray-600">Check Your BMI</h5>
-      <div className="w-3/5 m-auto h-60">
+      <div className="w-full m-auto h-60 ">
         <span className="font-semibold text-lg text-gray-600 block">
           Your Height
         </span>
@@ -75,7 +75,7 @@ const Bmi = () => {
           Reset
         </button>
         {resultBox && (
-          <div className="text-center">
+          <div className="text-center ">
             <span className="text-md font-semibold text-gray-600">
               Your BMI is
             </span>
