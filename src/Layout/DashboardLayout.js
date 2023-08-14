@@ -21,9 +21,10 @@ const DashboardLayout = () => {
                         <li className='bg-cyan-500 text-white rounded-lg mb-1'><Link to="/dashboard">My Appointments</Link></li>
                         {
                             isAdmin && <>
+                              <li className='bg-cyan-500 text-white rounded-lg mb-1'><Link to="/dashboard/all-appointments">All Appointments</Link></li>
                                  <li className='bg-cyan-500 text-white rounded-lg mb-1'><Link to="/dashboard/allusers">All users</Link></li>
                                  <li className='bg-cyan-500 text-white rounded-lg mb-1'><Link to="/dashboard/adddoctor">Add A Doctor</Link></li>
-                                 <li className='bg-cyan-500 text-white rounded-lg '><Link to="/dashboard/managedoctors">Manage Doctors</Link></li>
+                                 <li className='bg-cyan-500 text-white rounded-lg '><Link to="/dashboard/manage-doctors">Manage Doctors</Link></li>
                             </>
                         }
 

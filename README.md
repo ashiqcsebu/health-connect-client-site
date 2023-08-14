@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+REACT_APP_projectId= doctors-portal-93ace
+REACT_APP_storageBucket= doctors-portal-93ace.appspot.com
+REACT_APP_messagingSenderId= 329789053313
+REACT_APP_appId= 1:329789053313:web:bd84c2925251347389b080
+REACT_APP_imgbb_key= fe8b3395e6f1893d9987afb360b63029
+REACT_APP_STRIPE_PK= pk_test_51M8pAwH4o7mHFaFdUs9BrmFcHaT6RMEG0JpikVuSl5YQIxwWGa6oGeEv0jFoGqtxcfvNZvx3vdZVlMzSgsF4mgAW00LnYuir8D
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Features:
 
-In the project directory, you can run:
+Online Appointment Booking: Patients can schedule appointments online through a website or mobile app, selecting the preferred doctor, date, and time slot based on availability.
 
-### `npm start`
+Real-Time Availability: The system displays real-time availability of doctors, allowing patients to choose a suitable time slot.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Patient Registration: New patients can create accounts by providing their personal and medical information, which can be used for future appointments and record-keeping.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Doctor Profiles: Information about each doctor, including their specialization, experience, qualifications, and patient reviews, helps patients make informed decisions.
 
-### `npm test`
+Mail Confirmation: Patients receive automated appointments after successfull appointment Booking.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Integrated Calendar: Authority and Patient have access to a centralized calendar showing all appointments, ensuring efficient scheduling and management.
 
-### `npm run build`
+Multi-Doctor Support: Appointments with different doctors within the same clinic can be managed using the system.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Admin Dashboard: Clinic staff can manage appointments, monitor availability, and handle patient data through an easy-to-use administrative dashboard.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Analytics and Reports: Generate reports on appointment trends, no-show rates, and other relevant metrics to optimize clinic operations.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Payment Integration: Patients can make payments for consultations and services online.
 
-### `npm run eject`
+Privacy and Security: Compliance with healthcare regulations to ensure patient data confidentiality and security.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Remember that the specific features may vary depending on the software provider and the needs of the healthcare facility implementing the system.

@@ -7,6 +7,7 @@ import Loading from "../../Shared/Loading/Loading";
 const ManageDoctors = () => {
   const [deletingDoctor, setDeletingDoctor] = useState(null);
 
+
   const closeModal = () => {
     setDeletingDoctor(null);
   };
@@ -17,6 +18,7 @@ const ManageDoctors = () => {
     refetch,
   } = useQuery({
     queryKey: ["doctors"],
+    
     queryFn: async () => {
       try {
         const res = await fetch("http://localhost:5000/doctors", {
@@ -25,8 +27,10 @@ const ManageDoctors = () => {
           },
         });
         const data = await res.json();
+      
         return data;
-      } catch (error) {}
+      } catch (error) {
+        console.log("manage doctor" , error.message);}
     },
   });
 
@@ -52,7 +56,8 @@ const ManageDoctors = () => {
 
   return (
     <div>
-      <h2 className="text-3xl">Manage Doctors: {doctors?.length}</h2>
+       <h3 className="text-3xl mb-5"> Total <span className='font-semibold text-yellow-700'> {doctors?.length}</span> Doctors Available</h3>
+     
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -66,7 +71,7 @@ const ManageDoctors = () => {
             </tr>
           </thead>
           <tbody>
-            {doctors>=0 && doctors?.map((doctor, i) => (
+            {doctors?.length ? doctors?.map((doctor, i) => (
               <tr key={doctor._id}>
                 <th>{i + 1}</th>
                 <td>
@@ -89,7 +94,13 @@ const ManageDoctors = () => {
                   </label>
                 </td>
               </tr>
-            ))}
+            )
+            ) : <> </>}
+
+           
+
+
+
           </tbody>
         </table>
       </div>

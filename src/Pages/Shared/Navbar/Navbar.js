@@ -20,10 +20,14 @@ const Navbar = () => {
       <li>
         <Link to="/appointment">Appointment</Link>
       </li>
+      
+      <li>
+        <Link to="/all-doctors">Find Doctors</Link>
+      </li>
       <li>
         <Link to="/bmi">BMI Calculate</Link>
       </li>
-      {/* <li><Link to="/contact">Contact Us</Link></li> */}{" "}
+
       {user?.uid ? (
         <>
           <li>

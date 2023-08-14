@@ -1,32 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthProvider';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-const MyAppointment = () => {
-    const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+const AllAppointments = () => {
+   
+    const [bookings, setBookings] = useState([]);
+    useEffect(() => {
+      fetch("http://localhost:5000/booking")
+        .then((res) => res.json())
+        .then((data) => setBookings(data));
+    }, []);
 
-    const { data: bookings = [] } = useQuery({
-      
-        queryKey: ['bookings', user?.email],
-        queryFn: async () => {
-            const res = await fetch(url, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
-                }
-            });
-            const data = await res.json();
-         
-            return data;
-        }
-       
-    })
+    
 
     return (
         <div>
-            <h3 className="text-3xl mb-5">My Appointments</h3>
+            <h3 className="text-3xl mb-5"> Total <span className='font-semibold text-yellow-700'> {bookings?.length}</span> Appointments Recorded</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full ">
                     <thead >
@@ -37,6 +29,7 @@ const MyAppointment = () => {
                             <th>Doctor Name</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Phone</th>
                             <th>Payment</th>
                         </tr>
                     </thead>
@@ -50,6 +43,7 @@ const MyAppointment = () => {
                                 <td>{booking.doctorName}</td>
                                 <td>{booking.appointmentDate}</td>
                                 <td>{booking.slot}</td>
+                                <td>{booking.phone}</td>
                                 <td>
                                     {
                                         booking?.price && !booking.paid && <Link
@@ -65,9 +59,7 @@ const MyAppointment = () => {
                                     }
                                 </td>
                             </tr>
-                            ) : <>
-                                <h1 className='text-2xl font-semibold '> No Appointment Yet</h1>
-                             </>
+                            ) : <> </>
                         } 
                     </tbody>
                 </table>
@@ -76,4 +68,4 @@ const MyAppointment = () => {
     );
 };
 
-export default MyAppointment;
+export default AllAppointments;

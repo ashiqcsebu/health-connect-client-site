@@ -21,6 +21,7 @@ const AddDoctor = () => {
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/appointmentSpecialty");
       const data = await res.json();
+     // console.log(data);
       return data;
     },
   });
@@ -37,11 +38,12 @@ const AddDoctor = () => {
       .then((res) => res.json())
       .then((imgData) => {
         if (imgData.success) {
-          console.log(imgData.data.url);
           const doctor = {
             name: data.name,
             email: data.email,
             specialty: data.specialty,
+            biodata: data.biodata,
+            experience: data.experience,
             image: imgData.data.url,
           };
 
@@ -56,9 +58,9 @@ const AddDoctor = () => {
           })
             .then((res) => res.json())
             .then((result) => {
-              console.log(result);
+            //  console.log(result);
               toast.success(`${data.name} is added successfully`);
-              navigate("/dashboard/managedoctors");
+              navigate("/dashboard/manage-doctors");
             });
         }
       });
@@ -69,16 +71,18 @@ const AddDoctor = () => {
   }
 
   return (
-    <div className="w-96 p-7">
-      <h2 className="text-4xl">Add A Doctor</h2>
+    <div>
+      <h1 className="text-5xl text-center font-bold text-primary">Add New Doctor</h1>
+      <div className="grid justify-items-center "> 
       <form onSubmit={handleSubmit(handleAddDoctor)}>
-        <div className="form-control w-full max-w-xs">
+        <div className="form-control w-full max-w-xs ">
           <label className="label">
             {" "}
             <span className="label-text">Name</span>
           </label>
           <input
             type="text"
+            placeholder="Enter Doctor's Name"
             {...register("name", {
               required: "Name is Required",
             })}
@@ -86,6 +90,7 @@ const AddDoctor = () => {
           />
           {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         </div>
+
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
@@ -93,6 +98,7 @@ const AddDoctor = () => {
           </label>
           <input
             type="email"
+            placeholder="Enter Doctor's Email"
             {...register("email", {
               required: true,
             })}
@@ -102,6 +108,7 @@ const AddDoctor = () => {
             <p className="text-red-500">{errors.email.message}</p>
           )}
         </div>
+
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
@@ -118,6 +125,43 @@ const AddDoctor = () => {
             ))}
           </select>
         </div>
+
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            {" "}
+            <span className="label-text">Years of Experience</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter ,How Many years of Experience? "
+            {...register("experience", {
+              required: "Experience is Required",
+            })}
+            className="input input-bordered w-full max-w-xs"
+          />
+          {errors.experience && (
+            <p className="text-red-500">{errors.experience.message}</p>
+          )}
+        </div>
+
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            {" "}
+            <span className="label-text">Biodata</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Doctor's Biodata"
+            {...register("biodata", {
+              required: "Biodata is Required",
+            })}
+            className="input input-bordered w-full max-w-xs"
+          />
+          {errors.biodata && (
+            <p className="text-red-500">{errors.biodata.message}</p>
+          )}
+        </div>
+
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
@@ -132,21 +176,14 @@ const AddDoctor = () => {
           />
           {errors.img && <p className="text-red-500">{errors.img.message}</p>}
         </div>
-        <input
-          className="btn btn-accent w-full mt-4"
-          value="Add Doctor"
-          type="submit"
-        />
+       
+        <input className="btn btn-primary mt-4  w-80" value="Add Doctor" type="submit" />
+        
       </form>
+     
+      </div>
     </div>
   );
 };
-
-/**
- * Three places to store images
- * 1. Third party image hosting server
- * 2. File system of your server
- * 3. mongodb (database)
- */
 
 export default AddDoctor;

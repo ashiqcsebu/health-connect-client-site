@@ -14,7 +14,11 @@ import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Calculators from "../../Pages/Home/Calculators/Calculators";
-import ContactUs from "../../Pages/ContactUs/ContactUs";
+import AllDoctors from "../../Pages/AllDoctorsInfo/AllDoctors";
+import Details from "../../Pages/DoctorDetail/Details";
+import AllAppointments from "../../Pages/Dashboard/AllAppointments/AllAppointments";
+
+
 
 const router = createBrowserRouter([
   {
@@ -36,16 +40,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/appointment",
-        element: <Appointment></Appointment>,
+        element: <PrivateRoute>     <Appointment></Appointment> </PrivateRoute>
+      ,
+      },
+      {
+        path: "/all-doctors",
+        element: <AllDoctors></AllDoctors>
       },
       {
         path: "/bmi",
         element: <Calculators></Calculators>,
       },
       {
-        path: "/contact",
-        element: <ContactUs></ContactUs>
+        path: '/doctors/:id',
+        element:<Details></Details>,
+        loader: ({params})=> fetch(`http://localhost:5000/doctors/${params.id}`)
       },
+     
     ],
   },
   {
@@ -60,6 +71,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <MyAppointment></MyAppointment>,
+      },
+      {
+        path: "/dashboard/all-appointments",
+        element: (
+          <AdminRoute>
+            <AllAppointments></AllAppointments>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allusers",
@@ -78,7 +97,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/managedoctors",
+        path: "/dashboard/manage-doctors",
         element: (
           <AdminRoute>
             <ManageDoctors></ManageDoctors>

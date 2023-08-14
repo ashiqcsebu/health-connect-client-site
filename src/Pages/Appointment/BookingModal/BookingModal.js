@@ -1,13 +1,38 @@
 import { format } from "date-fns";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import Loading from "../../Shared/Loading/Loading";
 
-const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
+const BookingModal = ({
+  treatment,
+  setTreatment,
+  selectedDate,
+  refetch,
+  data,
+}) => {
   // treatment is just another name of appointmentOptions with name, slots, _id
   const { name: treatmentName, slots, price } = treatment;
   const date = format(selectedDate, "PP");
   const { user } = useContext(AuthContext);
+
+  const [doctor, setDoctor] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/getDoctorsBySpecialty/${treatment.name}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setDoctor(data);
+       // console.log(data);
+
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, [treatment.name]);
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -16,7 +41,8 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
     const name = form.name.value;
     const email = form.email.value;
     const phone = form.phone.value;
-    // [3, 4, 5].map((value, i) => console.log(value))
+    const docName = form.doctorName.value;
+
     const booking = {
       appointmentDate: date,
       treatment: treatmentName,
@@ -25,11 +51,9 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
       email,
       phone,
       price,
+      doctorName: docName,
     };
 
-    // TODO: send data to the server
-    // and once data is saved then close the modal
-    // and display success toast
     fetch("http://localhost:5000/bookings", {
       method: "POST",
       headers: {
@@ -39,7 +63,7 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       // console.log(data);
         if (data.acknowledged) {
           setTreatment(null);
           toast.success("Booking confirmed");
@@ -49,6 +73,9 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
         }
       });
   };
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <>
@@ -72,18 +99,35 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
               value={date}
               className="input w-full input-bordered "
             />
-            <select name="slot" className="select select-bordered w-full">
+            <select
+              name="slot"
+              className="select select-bordered w-full"
+              required
+            >
               {slots.map((slot, i) => (
                 <option value={slot} key={i}>
                   {slot}
                 </option>
               ))}
             </select>
+
+            <select name="doctorName" className="select select-bordered w-full">
+              {doctor?.length ? (
+                doctor?.map((doc, i) => (
+                  <option value={doc.name} key={i}>
+                    {doc.name}
+                  </option>
+                ))
+              ) : (
+                <></>
+              )}
+            </select>
+
             <input
               name="name"
               type="text"
               defaultValue={user?.displayName}
-             // disabled
+              // disabled
               placeholder="Your Name"
               className="input w-full input-bordered"
             />
@@ -101,6 +145,7 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
               placeholder="Phone Number"
               className="input w-full input-bordered"
             />
+
             <br />
             <input
               className="btn btn-accent w-full"

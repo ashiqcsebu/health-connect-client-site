@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const Bmi = () => {
   const [resultBox, showResultBox] = useState(false);
   const [feet, setFeet] = useState(0);
@@ -16,7 +17,7 @@ const Bmi = () => {
     let meeter = totalInches / 39.37;
     let bmi = parseInt(weight) / (meeter * meeter);
     setBMI(bmi.toFixed(2));
-    console.log("bmi is: ", bmi);
+   // console.log("bmi is: ", bmi);
     showResultBox(true);
     // console.log(totalInches, parseInt(weight));
   };
@@ -67,7 +68,8 @@ const Bmi = () => {
           onClick={() => CalculateBmi()}
         >
           Check BMI
-        </button>
+        </button> 
+        
         <button
           onClick={ResetClicked}
           className="bg-red-600 text-white font-semibold px-3 py-1 rounded mx-2"
